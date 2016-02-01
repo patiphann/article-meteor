@@ -1,0 +1,36 @@
+<template name="articles">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Last Update By</th>
+        <th>Last Update Date</th>
+        {{# if currentUser}}
+          <th>Manage</th>
+        {{/if}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each articles}}
+        <tr>
+          <td>{{runNo @index}}</td>
+          <td>{{title}}</td>
+          <td>{{showUpdatedName updated_name}}</td>
+          <td>{{formatDate updatedAt 'DD-MM-YYYY HH:mm:ss'}}</td>
+          {{# if currentUser}}
+            <td>
+              <a href="/article/view/{{_id}}"><span class="glyphicon glyphicon-comment margin-r-5 pointer font-orange" title="View" id="View"></span></a> 
+              <a href="/article/edit/{{_id}}"><span class="glyphicon glyphicon-wrench margin-r-5 pointer font-blue" title="Edit" id="Edit"></span></a> 
+              <span class="glyphicon glyphicon-trash pointer" title="Remove" id="Remove"></span>
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <!-- <div class="js-loadMore well text-center">
+    <button class="btn">+ Load More</button>
+  </div> -->
+  <div class="margin-b-150"></div>
+</template> 
